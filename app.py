@@ -32,6 +32,7 @@ def calculate_current_home_value(start_value, start_date, current_date, region):
 
     current_value = start_value * (current_index / start_index)
     return current_value
+
 @app.route('/')
 def index():
     return 'Welcome to the Flask backend!'
@@ -40,7 +41,6 @@ def index():
 @app.route('/favicon.ico')
 def favicon():
     return app.send_static_file('favicon.ico')
-
 
 @app.route('/calculate_home_value', methods=['POST'])
 def calculate_home_value():
@@ -58,7 +58,7 @@ def calculate_home_value():
     return jsonify(current_home_value=current_home_value)
 
 if __name__ == "__main__":
-    app.run()
+    # Get the port number from the environment variable, or use a default value (e.g., 5000)
     port = int(os.environ.get("PORT", 5000))
 
     # Run the app with host='0.0.0.0' to listen on all network interfaces
