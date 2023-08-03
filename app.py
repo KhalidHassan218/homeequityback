@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS  # Import the CORS module
 import requests
 import pandas as pd
+import os
 
 app = Flask(__name__)
 CORS(app)  # Initialize CORS with your Flask app
@@ -58,3 +59,7 @@ def calculate_home_value():
 
 if __name__ == "__main__":
     app.run()
+    port = int(os.environ.get("PORT", 5000))
+
+    # Run the app with host='0.0.0.0' to listen on all network interfaces
+    app.run(host="0.0.0.0", port=port)
